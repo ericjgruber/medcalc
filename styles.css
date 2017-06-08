@@ -1,0 +1,54 @@
+table {
+    width: 100%;
+}
+
+table.medchart {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+tr.heading {
+    background: #2C2B2A;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+tr.subheading {
+    background: #5A5757;
+    color: #fff;
+    font-size: .7rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+td {
+    border: 1px solid gray;
+    font-size: .7rem;
+    width: 14%;
+}
+
+.preferred {
+    background-color: #5B909E;
+    color: #fff;
+}
+
+.caution {
+    background-color: #E4942F;
+    color: #fff;
+}
+
+.avoid {
+    background-color: #D5662C;
+    color: #fff;
+}
+
+.headerEven {
+    background-color: #446D78;
+    color: #fff;
+}
+
+.headerOdd {
+    background-color: #365761;
+    color: #fff;
+}

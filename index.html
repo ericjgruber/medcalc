@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Medical Calculator</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -84,6 +85,286 @@
       </div>
 
     <button type="button" @click="calculatedTotals" class="btn btn-lg btn-success">Calculate</button>
+
+    <h2>History</h2>
+    <ul>
+      <li><input v-model="diabetesPrevention" class="form-check-input" type="checkbox" value="diabetesPrevention"> Diabetes Prevention</li>
+      <li><input v-model="type2" class="form-check-input" type="checkbox" value="type2"> Type 2 Diabetes Mellitus</li>
+      <li><input v-model="hypertension" class="form-check-input" type="checkbox" value="hypertension"> Hypertension</li>
+      <li><input v-model="cvd" class="form-check-input" type="checkbox" value="cvd"> Cardiovascular Disease</li>
+      <li><input v-model="ckd" class="form-check-input" type="checkbox" value="ckd"> Chronic Kidney Disease</li>
+      <li><input v-model="nephro" class="form-check-input" type="checkbox" value="nephro"> Nephrolithiasis</li>
+      <li><input v-model="hepatic" class="form-check-input" type="checkbox" value="hepatic"> Hepatic Impairment</li>
+      <li><input v-model="depression" class="form-check-input" type="checkbox" value="depression"> Depression</li>
+      <li><input v-model="anxiety" class="form-check-input" type="checkbox" value="anxiety"> Anxiety</li>
+      <li><input v-model="psychoses" class="form-check-input" type="checkbox" value="psychoses"> Psychoses</li>
+      <li><input v-model="bingeEating" class="form-check-input" type="checkbox" value="bingeEating"> Binge Eating Disorder</li>
+      <li><input v-model="glaucoma" class="form-check-input" type="checkbox" value="glaucoma"> Glaucoma</li>
+      <li><input v-model="seizureDisorder" class="form-check-input" type="checkbox" value="seizureDisorder"> Seizure Disorder</li>
+      <li><input v-model="pancreatitis" class="form-check-input" type="checkbox" value="pancreatitis"> Pancreatitis</li>
+      <li><input v-model="opioids" class="form-check-input" type="checkbox" value="opioids"> Opioids</li>
+      <li><input v-model="women" class="form-check-input" type="checkbox" value="women"> Women of Reproductive Potential</li>
+      <li><input v-model="age65" class="form-check-input" type="checkbox" value="age65"> Age > 65 years</li>
+      <li><input v-model="alcohol" class="form-check-input" type="checkbox" value="alcohol"> Alcoholism/ Addiction</li>
+      <li><input v-model="postBary" class="form-check-input" type="checkbox" value="postBary"> Post-Bariatric Surgery</li>
+    </ul>
+
+    <table class="medchart">
+      <tr class="heading">
+        <th colspan="7">Preferred Weight-Loss Medications: Individualization of Therapy</th>
+      </tr>
+      <tr class="subheading">
+        <td class=""></td>
+        <td class="subheading"></td>
+        <td class="subheading"></td>
+        <td class="subheading">Key:</td>
+        <td class="subheading"><span class="blueBox"></span> Preferred Drug</td>
+        <td class="subheading"><span class="yellowBox"></span> Use With Caution</td>
+        <td class="subheading"><span class="orangeBox"></span> Avoid</td>
+      </tr>
+
+      <tr>
+        <td class=""></td>
+        <td class=""></td>
+        <td class="headerEven">Orlistat</td>
+        <td class="headerOdd">Lorcaserin</td>
+        <td class="headerEven">Phentermine/topiramate ER</td>
+        <td class="headerOdd">Naltrexone ER/ bupropion ER</td>
+        <td class="headerEven">Liraglutide 3 mg</td>
+      </tr>
+
+      <tr v-if="diabetesPrevention">
+        <td class="">Diabetes Prevention (metabolic syndrome, prediabetes)</td>
+        <td class=""></td>
+        <td class="preferred"></td>
+        <td class="caution">Insufficient data for T2DM prevention</td>
+        <td class="preferred"></td>
+        <td class="caution">Insufficient data for T2DM prevention</td>
+        <td class="preferred"></td>
+      </tr>
+
+      <tr v-if="type2">
+        <td class="">Type 2 Diabetes Mellitus</td>
+        <td class=""></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+      </tr>
+
+      <tr v-if="hypertension">
+        <td class="">Hypertension</td>
+        <td class=""></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred">Monitor heart rate</td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td class="caution">Monitor BP and heart rate</td>
+            </tr>
+            <tr>
+              <td class="avoid">Contraindicated in uncontrolled HTN</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">Monitor heart rate</td>
+      </tr>
+
+      <tr v-if="cvd">
+        <td class="">Cardiovascular Disease</td>
+        <td class="">
+          <table>
+            <tr>
+              <td>CAD</td>
+            </tr>
+            <tr>
+              <td>Arrhythmia</td>
+            </tr>
+            <tr>
+              <td class="caution">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="preferred">Monitor for bradycardia</td>
+            </tr>
+            <tr>
+              <td class="caution">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Monitor heart rate</td>
+            </tr>
+            <tr>
+              <td class="caution">Monitor heart rate, rhythm</td>
+            </tr>
+            <tr>
+              <td class="caution">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Monitor heart rate, BP</td>
+            </tr>
+            <tr>
+              <td class="caution">Monitor heart rate, rhythm, BP</td>
+            </tr>
+            <tr>
+              <td class="caution">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Monitor heart rate</td>
+            </tr>
+            <tr>
+              <td class="caution">Monitor heart rate, rhythm</td>
+            </tr>
+            <tr>
+              <td class="caution">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td>CAD</td>
+            </tr>
+            <tr>
+              <td>Arrhythmia</td>
+            </tr>
+            <tr>
+              <td class="caution">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Opioid Use -->
+      <tr v-if="opioids">
+        <td>Opioid Use</td>
+        <td></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="avoid">Will antagonize opioids and opiates</td>
+        <td class="preferred"></td>
+      </tr>
+
+      <!-- Women of Reproductive Potential -->
+      <tr v-if="women">
+        <td class="">Women of Reproductive Potential</td>
+        <td class="">
+          <table>
+            <tr>
+              <td>Pregnancy</td>
+            </tr>
+            <tr>
+              <td>Breast-feeding</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td class="preferred">Use contraception and discontinue orlistat should pregnancy occur</td>
+            </tr>
+            <tr>
+              <td class="avoid">Not recommended</td>
+            </tr>
+          </table>
+        </td>
+        <td class="caution">
+          <table>
+            <tr>
+              <td class="preferred">Use contraception and discontinue lorcaserin should pregnancy occur</td>
+            </tr>
+            <tr>
+              <td class="caution">Not recommended</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td class="preferred">Use contraception
+                and discontinue phentermine/topiramate should pregnancy
+                occur (perform monthly pregnacy checks to identify early pregnancy)</td>
+            </tr>
+            <tr>
+              <td class="caution">Not recommended</td>
+            </tr>
+          </table>
+        </td>
+        <td class="caution">
+          <table>
+            <tr>
+              <td class="preferred">Use contraception and discontinue naltrexone ER/bupropion ER should pregnancy occur</td>
+            </tr>
+            <tr>
+              <td class="caution">Not recommended</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td class="preferred">Use contraception and discontinue liraglutide 3 mg should pregnancy occur</td>
+            </tr>
+            <tr>
+              <td class="caution">Not recommended</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Age ≥65 years * -->
+      <tr v-if="age65">
+        <td class="">Age ≥65 years *</td>
+        <td class=""></td>
+        <td class="preferred">Limited data available</td>
+        <td class="caution">Insufficient data</td>
+        <td class="preferred">Limited data available</td>
+        <td class="caution">Insufficient data</td>
+        <td class="preferred">Limited data available</td>
+      </tr>
+
+      <!-- Alcoholism/ Addiction -->
+      <tr v-if="alcohol">
+        <td class="">Alcoholism/ Addiction</td>
+        <td class=""></td>
+        <td class="preferred">&nbsp;</td>
+        <td class="caution">Might have abuse potential due to euphoria at high doses</td>
+        <td class="caution">Insufficient data, though topiramate might exert therapeutic benefits</td>
+        <td class="avoid">Avoid due to seizure risk and lower seizure threshold on bupropion data</td>
+        <td class="preferred">&nbsp;</td>
+      </tr>
+
+      <!-- Post-Bariatric Surgery -->
+      <tr v-if="postBary">
+        <td class="">Post-Bariatric Surgery</td>
+        <td class=""></td>
+        <td class="caution">Insufficient data</td>
+        <td class="caution">Insufficient data</td>
+        <td class="preferred">Limited Data Available</td>
+        <td class="caution">Insufficient data</td>
+        <td class="preferred">Data available at 1.8 – 3.0 mg/day</td>
+      </tr>
+    </table>
   </form>
 
 </div>
