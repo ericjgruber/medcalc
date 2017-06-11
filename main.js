@@ -35,17 +35,11 @@ var vm = new Vue({
       // Get BMR:
       // Male
       if (gender == "male") {
-        // (old, but correct?)
-        // var bmrTotals = 66 + (6.2 * weight) + (12.7 * heightInches) - (6.76 * age);
-        // Client provided: (10w/2.2) + (0.15875h) – (5A) + 5
-        var bmrTotals = (10 * weight/2.2) + (0.15875 * heightInches) - (5 * age) + 5;
+        var bmrTotals = 66 + (6.2 * weight) + (12.7 * heightInches) - (6.76 * age);
       }
       // Female
       else if (gender == "female") {
-        // (old, but correct?
-        // var bmrTotals = 655.1 + (4.35 * weight) + (4.7 * heightInches) - (4.7 * age);
-        // Client provided: (10w/2.2) + (0.15875h) – (5A) – 161
-        var bmrTotals = (10 * weight/2.2) + (0.15875 * heightInches) - (5 * age) - 161;
+        var bmrTotals = 655.1 + (4.35 * weight) + (4.7 * heightInches) - (4.7 * age);
       }
 
       var bmrTotals = bmrTotals.toFixed();
