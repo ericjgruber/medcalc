@@ -28,6 +28,15 @@ td {
     width: 14%;
 }
 
+.box {
+    font-size: 1rem;
+    width: 20px;
+    height: 20px;
+    display: block;
+    border: 1px solid white;
+    float: left;
+    margin-left: .5rem;
+}
 .preferred {
     background-color: #5B909E;
     color: #fff;

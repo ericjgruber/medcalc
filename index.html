@@ -93,7 +93,7 @@
       <li><input v-model="hypertension" class="form-check-input" type="checkbox" value="hypertension"> Hypertension</li>
       <li><input v-model="cvd" class="form-check-input" type="checkbox" value="cvd"> Cardiovascular Disease</li>
       <li><input v-model="ckd" class="form-check-input" type="checkbox" value="ckd"> Chronic Kidney Disease</li>
-      <li><input v-model="nephro" class="form-check-input" type="checkbox" value="nephro"> Nephrolithiasis</li>
+      <li><input v-model="nephrolithiasis" class="form-check-input" type="checkbox" value="nephrolithiasis"> Nephrolithiasis</li>
       <li><input v-model="hepatic" class="form-check-input" type="checkbox" value="hepatic"> Hepatic Impairment</li>
       <li><input v-model="depression" class="form-check-input" type="checkbox" value="depression"> Depression</li>
       <li><input v-model="anxiety" class="form-check-input" type="checkbox" value="anxiety"> Anxiety</li>
@@ -118,9 +118,9 @@
         <td class="subheading"></td>
         <td class="subheading"></td>
         <td class="subheading">Key:</td>
-        <td class="subheading"><span class="blueBox"></span> Preferred Drug</td>
-        <td class="subheading"><span class="yellowBox"></span> Use With Caution</td>
-        <td class="subheading"><span class="orangeBox"></span> Avoid</td>
+        <td class="subheading"><span class="box preferred">&nbsp;</span> Preferred Drug</td>
+        <td class="subheading"><span class="box caution">&nbsp;</span> Use With Caution</td>
+        <td class="subheading"><span class="box avoid">&nbsp;</span> Avoid</td>
       </tr>
 
       <tr>
@@ -133,16 +133,18 @@
         <td class="headerEven">Liraglutide 3 mg</td>
       </tr>
 
+      <!-- Diabetes Prevention -->
       <tr v-if="diabetesPrevention">
         <td class="">Diabetes Prevention (metabolic syndrome, prediabetes)</td>
-        <td class=""></td>
-        <td class="preferred"></td>
+        <td class="">&nbsp;</td>
+        <td class="preferred">&nbsp;</td>
         <td class="caution">Insufficient data for T2DM prevention</td>
-        <td class="preferred"></td>
+        <td class="preferred">&nbsp;</td>
         <td class="caution">Insufficient data for T2DM prevention</td>
         <td class="preferred"></td>
       </tr>
 
+      <!-- Type II Diabetes -->
       <tr v-if="type2">
         <td class="">Type 2 Diabetes Mellitus</td>
         <td class=""></td>
@@ -153,6 +155,7 @@
         <td class="preferred"></td>
       </tr>
 
+      <!-- Hypertension -->
       <tr v-if="hypertension">
         <td class="">Hypertension</td>
         <td class=""></td>
@@ -172,8 +175,21 @@
         <td class="preferred">Monitor heart rate</td>
       </tr>
 
+      <!-- Cardiovascular Disease -->
       <tr v-if="cvd">
-        <td class="">Cardiovascular Disease</td>
+        <td class="">
+          <table>
+            <tr>
+              <td>Cardiovascular Disease</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </td>
         <td class="">
           <table>
             <tr>
@@ -183,7 +199,20 @@
               <td>Arrhythmia</td>
             </tr>
             <tr>
-              <td class="caution">Insufficient data</td>
+              <td>CHF</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="preferred">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="avoid">Insufficient data</td>
             </tr>
           </table>
         </td>
@@ -196,7 +225,7 @@
               <td class="preferred">Monitor for bradycardia</td>
             </tr>
             <tr>
-              <td class="caution">Insufficient data</td>
+              <td class="avoid">Insufficient data</td>
             </tr>
           </table>
         </td>
@@ -209,7 +238,7 @@
               <td class="caution">Monitor heart rate, rhythm</td>
             </tr>
             <tr>
-              <td class="caution">Insufficient data</td>
+              <td class="avoid">Insufficient data</td>
             </tr>
           </table>
         </td>
@@ -219,10 +248,10 @@
               <td class="caution">Monitor heart rate, BP</td>
             </tr>
             <tr>
-              <td class="caution">Monitor heart rate, rhythm, BP</td>
+              <td class="caution">Monitor HR, rhythm, BP</td>
             </tr>
             <tr>
-              <td class="caution">Insufficient data</td>
+              <td class="avoid">Insufficient data</td>
             </tr>
           </table>
         </td>
@@ -232,23 +261,405 @@
               <td class="caution">Monitor heart rate</td>
             </tr>
             <tr>
-              <td class="caution">Monitor heart rate, rhythm</td>
+              <td class="caution">Monitor HR, rhythm</td>
             </tr>
             <tr>
-              <td class="caution">Insufficient data</td>
+              <td class="avoid">Insufficient data</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Chronic Kidney Disease -->
+      <tr v-if="ckd">
+        <td class="">
+          <table>
+            <tr>
+              <td>Chronic Kidney Disease<br><br><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="">
+          <table>
+            <tr>
+              <td>Mild<br>
+                (50–79 mL/min)</td>
+            </tr>
+            <tr>
+              <td>Moderate<br>(30–49 mL/min)</td>
+            </tr>
+            <tr>
+              <td>Severe<br>
+                (<30 mL/min)</td>
             </tr>
           </table>
         </td>
         <td>
           <table>
             <tr>
-              <td>CAD</td>
+              <td class="preferred">&nbsp;<br><br></td>
             </tr>
             <tr>
-              <td>Arrhythmia</td>
+              <td class="preferred">&nbsp;<br><br></td>
             </tr>
             <tr>
-              <td class="caution">Insufficient data</td>
+              <td class="caution">Watch for oxalate nephropathy</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">&nbsp;<br><br></td>
+            </tr>
+            <tr>
+              <td class="preferred">&nbsp;<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Urinary clearance of drug metabolites</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">&nbsp;<br><br></td>
+            </tr>
+            <tr>
+              <td class="preferred">Do not exceed
+                7.5 mg/46 mg per day</td>
+            </tr>
+            <tr>
+              <td class="avoid">Urinary clearance of drug<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">&nbsp;<br><br></td>
+            </tr>
+            <tr>
+              <td class="preferred">Do not exceed
+                8 mg/90 mg bid</td>
+            </tr>
+            <tr>
+              <td class="avoid">Urinary clearance of drug<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">&nbsp;<br><br></td>
+            </tr>
+            <tr>
+              <td class="preferred">&nbsp;<br><br></td>
+            </tr>
+            <tr>
+              <td class="caution">Avoid vomiting and volume depletion</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Nephrolithiasis -->
+      <tr v-if="nephrolithiasis">
+        <td class="">Nephrolithiasis</td>
+        <td class=""></td>
+        <td class="avoid">Calcium oxalate stones</td>
+        <td class="preferred"></td>
+        <td class="avoid">Calcium oxalate stones</td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+      </tr>
+
+      <!-- Hepatic Impairment -->
+      <tr v-if="hepatic">
+        <td class="">
+          <table>
+            <tr>
+              <td>Hepatic Impairment<br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="">
+          <table>
+            <tr>
+              <td>Mild-Moderate<br>(Child-Pugh 5–9)</td>
+            </tr>
+            <tr>
+              <td>Severe<br>(Child-Pugh >9)</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Watch for cholelithiasis<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Not recommended<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Hepatic metabolism of drug<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Not recommended<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Do not exceed
+                7.5 mg/46 mg per day</td>
+            </tr>
+            <tr>
+              <td class="avoid">Not recommended<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Do not exceed
+                8 mg/90 mg in AM</td>
+            </tr>
+            <tr>
+              <td class="avoid">Not recommended<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Watch for cholelithiasis<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Not recommended<br><br></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Depression -->
+      <tr v-if="depression">
+        <td class="">
+          <table>
+            <tr>
+              <td>Depression<br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Insufficient safety data<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Avoid combinations of serotonergic drugs</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td>Avoid maximum dose: 15 mg/92 mg per day<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Insufficient safety data<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Avoid in adolescents and young adults</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Anxiety -->
+      <tr v-if="anxiety">
+        <td class="">Anxiety</td>
+        <td class=""></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred">Avoid max dose:
+          15 mg/92 mg per day</td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+      </tr>
+
+      <!-- Psychoses -->
+      <tr v-if="psychoses">
+        <td class="">Psychoses</td>
+        <td class=""></td>
+        <td class="caution">Insufficient data</td>
+        <td class="avoid">Insufficient data</td>
+        <td class="avoid">Insufficient data</td>
+        <td class="avoid">Insufficient data</td>
+        <td class="caution">Insufficient data</td>
+      </tr>
+
+      <!-- Binge Eating Disorder -->
+      <tr v-if="bingeEating">
+        <td class="">
+          <table>
+            <tr>
+              <td>Binge Eating Disorder<br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="caution">
+          <table>
+            <tr>
+              <td>Insufficient data; however, possible benefit based on reduction in food cravings</td>
+            </tr>
+          </table>
+        </td>
+        <td class="caution">
+          <table>
+            <tr>
+              <td>Insufficient data; however, possible benefit based on studies with topiramate</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="caution">Insufficient data, though possible benefit based on studies with bupropion<br></td>
+            </tr>
+            <tr>
+              <td class="avoid">Avoid in patients with purging or bulimia nervosa<br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="caution">
+          <table>
+            <tr>
+              <td>Insufficient data<br><br><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Glaucoma -->
+      <tr v-if="glaucoma">
+        <td class="">Glaucoma</td>
+        <td class=""></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="avoid">Contraindicated, may trigger angle closure</td>
+        <td class="avoid">May trigger angle closure</td>
+        <td class="preferred"></td>
+      </tr>
+
+      <!-- Seizure Disorder -->
+      <tr v-if="seizureDisorder">
+        <td class="">Seizure Disorder</td>
+        <td class=""></td>
+        <td class="preferred"></td>
+        <td class="preferred"></td>
+        <td class="preferred">If discontinuing from max dose, taper slowly</td>
+        <td class="avoid">Bupropion lowers seizure threshold</td>
+        <td class="preferred"></td>
+      </tr>
+
+      <!-- Pancreatitis -->
+      <tr v-if="pancreatitis">
+        <td class="">
+          <table>
+            <tr>
+              <td>Pancreatitis<br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td>Monitor for symptoms</td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td class="preferred">
+          <table>
+            <tr>
+              <td><br><br><br><br></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr>
+              <td class="preferred">Monitor for symptoms<br><br></td>
+            </tr>
+            <tr>
+              <td class="avoid">
+                Avoid if prior or current disease
+              </td>
             </tr>
           </table>
         </td>
@@ -267,66 +678,64 @@
 
       <!-- Women of Reproductive Potential -->
       <tr v-if="women">
-        <td class="">Women of Reproductive Potential</td>
+        <td class="">Women of Reproductive Potential<br><br><br><br><br><br></td>
         <td class="">
           <table>
             <tr>
-              <td>Pregnancy</td>
+              <td>Pregnancy<br><br><br><br><br><br><br><br><br><br><br><br></td>
             </tr>
             <tr>
               <td>Breast-feeding</td>
             </tr>
           </table>
         </td>
-        <td class="preferred">
+        <td class="">
           <table>
             <tr>
-              <td class="preferred">Use contraception and discontinue orlistat should pregnancy occur</td>
+              <td class="preferred">Use contraception and discontinue orlistat should pregnancy occur<br><br><br><br><br><br><br><br><br><br></td>
             </tr>
             <tr>
               <td class="avoid">Not recommended</td>
             </tr>
           </table>
         </td>
-        <td class="caution">
+        <td class="">
           <table>
             <tr>
-              <td class="preferred">Use contraception and discontinue lorcaserin should pregnancy occur</td>
+              <td class="preferred">Use contraception and discontinue lorcaserin should pregnancy occur<br><br><br><br><br><br><br><br><br><br></td>
             </tr>
             <tr>
-              <td class="caution">Not recommended</td>
+              <td class="avoid">Not recommended</td>
             </tr>
           </table>
         </td>
         <td class="preferred">
           <table>
             <tr>
-              <td class="preferred">Use contraception
-                and discontinue phentermine/topiramate should pregnancy
-                occur (perform monthly pregnacy checks to identify early pregnancy)</td>
+              <td class="preferred">Use contraception and discontinue phentermine/topiramate should pregnancy occur (perform monthly pregnancy checks to identify early pregnancy)<br><br><br><br><br><br></td>
             </tr>
             <tr>
-              <td class="caution">Not recommended</td>
+              <td class="avoid">Not recommended</td>
             </tr>
           </table>
         </td>
-        <td class="caution">
+        <td class="">
           <table>
             <tr>
-              <td class="preferred">Use contraception and discontinue naltrexone ER/bupropion ER should pregnancy occur</td>
+              <td class="preferred">Use contraception and discontinue naltrexone ER/bupropion ER should pregnancy occur<br><br><br><br><br><br><br><br><br></td>
             </tr>
             <tr>
-              <td class="caution">Not recommended</td>
+              <td class="avoid">Not recommended</td>
             </tr>
           </table>
         </td>
-        <td class="preferred">
+        <td class="">
           <table>
             <tr>
-              <td class="preferred">Use contraception and discontinue liraglutide 3 mg should pregnancy occur</td>
+              <td class="preferred">Use contraception and discontinue liraglutide 3 mg should pregnancy occur<br><br><br><br><br><br><br><br><br><br></td>
             </tr>
             <tr>
-              <td class="caution">Not recommended</td>
+              <td class="avoid">Not recommended</td>
             </tr>
           </table>
         </td>
@@ -345,7 +754,7 @@
 
       <!-- Alcoholism/ Addiction -->
       <tr v-if="alcohol">
-        <td class="">Alcoholism/ Addiction</td>
+        <td class="">Alcoholism/<br>Addiction</td>
         <td class=""></td>
         <td class="preferred">&nbsp;</td>
         <td class="caution">Might have abuse potential due to euphoria at high doses</td>
