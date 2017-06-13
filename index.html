@@ -14,6 +14,7 @@
 <div class="container" id="medcalc">
   <h1>{{ heading }}</h1>
   <h2>Recommended Treatment</h2>
+  <p class="required">All fields are required.</p>
 
   <form>
       <div class="row">
@@ -59,7 +60,7 @@
 
       <div class="row">
         <div class="col">
-          <label for="activity">Describe Your Activity Level</label>
+          <label for="activity">Describe Activity Level</label>
         </div>
         <div class="col">
           <input v-model="activity" type="radio" name="activity" value="0"> Sedentary (Little to no exercise)<br>
@@ -84,10 +85,13 @@
         <div class="col" id="suggestedActivity"></div>
       </div>
 
-    <button type="button" @click="calculatedTotals" class="btn btn-lg btn-success">Calculate</button>
+    <button type="button" @click="calculatedTotals" class="btn btn-lg btn-primary">Calculate</button>
 
-    <h2>History</h2>
-    <ul>
+    <h3>History</h3>
+    <p class="optional">Select as many histories as desired.</p>
+
+    <div class="history">
+      <ul>
       <li><input v-model="diabetesPrevention" class="form-check-input" type="checkbox" value="diabetesPrevention"> Diabetes Prevention</li>
       <li><input v-model="type2" class="form-check-input" type="checkbox" value="type2"> Type 2 Diabetes Mellitus</li>
       <li><input v-model="hypertension" class="form-check-input" type="checkbox" value="hypertension"> Hypertension</li>
@@ -108,6 +112,7 @@
       <li><input v-model="alcohol" class="form-check-input" type="checkbox" value="alcohol"> Alcoholism/ Addiction</li>
       <li><input v-model="postBary" class="form-check-input" type="checkbox" value="postBary"> Post-Bariatric Surgery</li>
     </ul>
+    </div>
 
     <table class="medchart">
       <tr class="heading">

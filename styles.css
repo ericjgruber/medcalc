@@ -1,3 +1,38 @@
+body {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a9e4f7+0,0fb4e7+100;Ble+3D+%235 */
+    background: #a9e4f7; /* Old browsers */
+    background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #a9e4f7 0%,#0fb4e7 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #a9e4f7 0%,#0fb4e7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7',GradientType=0 ); /* IE6-9 */
+}
+
+#medcalc {
+    background-color: #fff;
+    box-shadow: 0 0 5px #888;
+    padding: 1rem;
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+}
+
+.optional {
+    color: #ffA500;
+    font-weight: bold;
+}
+
+.history {
+    -webkit-columns: 100px 3; /* Chrome, Safari, Opera */
+    -moz-columns: 100px 3; /* Firefox */
+    columns: 100px 3;
+}
+
+h3 {
+    margin-top: 1rem;
+}
+
 table {
     width: 100%;
 }
