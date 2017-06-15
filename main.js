@@ -70,7 +70,9 @@ var vm = new Vue({
       jQuery('#bmiResult').html("<strong>Body Mass Index (BMI) is " + bmiTotals + "</strong>");
       jQuery('#bmrResult').html("<strong>Basal Metabolic Rate (BMR) is " + bmrTotals + " calories.</strong>");
       jQuery('#suggestedActivity').html("<strong>Your suggested caloric intake based on your activity level is " + activity + " calories</strong>");
-
+      jQuery('html, body').animate({
+        scrollTop: $("#history").offset().top
+      }, 2000);
     }
   }
 });
