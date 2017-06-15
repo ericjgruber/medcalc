@@ -30,7 +30,7 @@ var vm = new Vue({
       var kcal = jQuery('input[name="kcal"]').val();
 
       var bmiResult = weightMetric / heightResult;
-      var bmiTotals = bmiResult.toFixed();
+      var bmiTotals = bmiResult.toFixed(2);
 
       // Get BMR:
       // Male
