@@ -10,7 +10,7 @@ body {
 #medcalc {
     background-color: #fff;
     box-shadow: 0 0 5px #888;
-    padding: 1rem;
+    padding: 1rem 1rem 5rem;
 }
 
 .required {
